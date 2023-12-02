@@ -26,7 +26,7 @@ public class Day1 {
     public static void main(String[] args) {
         long res = 0L;
 
-        String filePath = "Day1Input.txt";
+        String filePath = "Day 1/Day1Input.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
