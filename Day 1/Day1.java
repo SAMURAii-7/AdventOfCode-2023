@@ -6,7 +6,7 @@ public class Day1 {
     static int sum(String str) {
         int flag = 0;
         int num = 0;
-        char currChar = ' ';
+        char currChar = '\0';
 
         for (int i = 0; i < str.length(); i++) {
             if (Character.isDigit(str.charAt(i))) {
