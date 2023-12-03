@@ -12,8 +12,11 @@ public class CubeConundrum2 {
     static int sum(String input) {
         String[] parts = input.split(":");
 
-        int gameId = Integer.parseInt(parts[0].substring(5, parts[0].length()));
         String cubesDrawn = parts[1].replace(" ", "");
+
+        int redMax = Integer.MIN_VALUE;
+        int greenMax = Integer.MIN_VALUE;
+        int blueMax = Integer.MIN_VALUE;
 
         // 3blue,4red
         // 1red,2green,6blue
@@ -31,24 +34,20 @@ public class CubeConundrum2 {
                 }
             }
 
-            int flag = 0;
             for (Map.Entry<String, Integer> entry : colourFreq.entrySet()) {
-                if (entry.getKey().equals("red") && entry.getValue() <= 12) {
-                    flag++;
+                if (entry.getKey().equals("red")) {
+                    redMax = Math.max(redMax, entry.getValue());
                 }
-                if (entry.getKey().equals("green") && entry.getValue() <= 13) {
-                    flag++;
+                if (entry.getKey().equals("green")) {
+                    greenMax = Math.max(greenMax, entry.getValue());
                 }
-                if (entry.getKey().equals("blue") && entry.getValue() <= 14) {
-                    flag++;
+                if (entry.getKey().equals("blue")) {
+                    blueMax = Math.max(blueMax, entry.getValue());
                 }
-            }
-            if (flag != colourFreq.entrySet().size()) {
-                return 0;
             }
         }
 
-        return gameId;
+        return redMax * greenMax * blueMax;
     }
 
     public static void main(String[] args) {
