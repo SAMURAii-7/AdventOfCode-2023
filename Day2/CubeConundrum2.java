@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CubeConundrum {
+public class CubeConundrum2 {
     static int sum(String input) {
         String[] parts = input.split(":");
 

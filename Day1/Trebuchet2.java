@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Trebuchet {
+public class Trebuchet2 {
 
     static String replaceWords(String s) {
         Map<String, String> numStrings = new HashMap<>();
