@@ -18,13 +18,10 @@ public class CubeConundrum2 {
         int greenMax = Integer.MIN_VALUE;
         int blueMax = Integer.MIN_VALUE;
 
-        // 3blue,4red
-        // 1red,2green,6blue
-        // 2green
+        Pattern pattern = Pattern.compile("(\\d+)([a-zA-Z]+)");
         for (String cubeSet : cubesDrawn.split(";")) {
             Map<String, Integer> colourFreq = new HashMap<>();
             for (String s : cubeSet.split(",")) {
-                Pattern pattern = Pattern.compile("(\\d+)([a-zA-Z]+)");
                 Matcher matcher = pattern.matcher(s);
 
                 if (matcher.find()) {
