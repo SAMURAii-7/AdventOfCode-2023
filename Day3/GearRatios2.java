@@ -10,26 +10,22 @@ import java.util.List;
 import java.util.Map;
 
 public class GearRatios2 {
-    static boolean isSymbol(String str) {
-        if (!Character.isDigit(str.charAt(0)) && !str.equals(".")) {
-            return true;
-        }
+    private static final List<int[]> dir = new ArrayList<>(List.of(
+            new int[] { 1, 1 },
+            new int[] { 1, 0 },
+            new int[] { 1, -1 },
+            new int[] { 0, -1 },
+            new int[] { -1, -1 },
+            new int[] { -1, 0 },
+            new int[] { -1, 1 },
+            new int[] { 0, 1 }));
 
-        return false;
+    static boolean isSymbol(char ch) {
+        return !Character.isDigit(ch) && ch != '.';
     }
 
     static boolean isEnginePart(int row, int col, int num, List<String[]> lines,
             Map<List<Integer>, List<Integer>> gears) {
-        List<int[]> dir = new ArrayList<>(List.of(
-                new int[] { 1, 1 },
-                new int[] { 1, 0 },
-                new int[] { 1, -1 },
-                new int[] { 0, -1 },
-                new int[] { -1, -1 },
-                new int[] { -1, 0 },
-                new int[] { -1, 1 },
-                new int[] { 0, 1 }));
-
         for (int[] d : dir) {
             int x = d[0];
             int y = d[1];
@@ -64,13 +60,13 @@ public class GearRatios2 {
                 int i = 0, j = 0;
 
                 while (j < strArray.length) {
-                    if (isSymbol(strArray[j]) || strArray[j].equals(".")) {
+                    if (isSymbol(strArray[j].charAt(0)) || strArray[j].equals(".")) {
                         i++;
                         j++;
                         continue;
                     }
                     StringBuilder num = new StringBuilder();
-                    while (j < strArray.length && !isSymbol(strArray[j]) && !strArray[j].equals(".")) {
+                    while (j < strArray.length && !isSymbol(strArray[j].charAt(0)) && !strArray[j].equals(".")) {
                         num.append(strArray[j]);
                         j++;
                     }

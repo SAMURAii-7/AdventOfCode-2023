@@ -7,32 +7,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GearRatios1 {
-    static boolean isSymbol(String str) {
-        if (!Character.isDigit(str.charAt(0)) && !str.equals(".")) {
-            return true;
-        }
+    private static final List<int[]> dir = new ArrayList<>(List.of(
+            new int[] { 1, 1 },
+            new int[] { 1, 0 },
+            new int[] { 1, -1 },
+            new int[] { 0, -1 },
+            new int[] { -1, -1 },
+            new int[] { -1, 0 },
+            new int[] { -1, 1 },
+            new int[] { 0, 1 }));
 
-        return false;
+    static boolean isSymbol(char ch) {
+        return !Character.isDigit(ch) && ch != '.';
     }
 
     static boolean isEnginePart(int row, int col, List<String[]> lines) {
-        List<int[]> dir = new ArrayList<>(List.of(
-                new int[] { 1, 1 },
-                new int[] { 1, 0 },
-                new int[] { 1, -1 },
-                new int[] { 0, -1 },
-                new int[] { -1, -1 },
-                new int[] { -1, 0 },
-                new int[] { -1, 1 },
-                new int[] { 0, 1 }));
-
         for (int[] d : dir) {
             int x = d[0];
             int y = d[1];
             int dx = row + x;
             int dy = col + y;
 
-            if (dx >= 0 && dx < lines.size() && dy >= 0 && dy < lines.get(0).length && isSymbol(lines.get(dx)[dy])) {
+            if (dx >= 0 && dx < lines.size() && dy >= 0 && dy < lines.get(0).length
+                    && isSymbol(lines.get(dx)[dy].charAt(0))) {
                 return true;
             }
         }
@@ -55,13 +52,13 @@ public class GearRatios1 {
                 int i = 0, j = 0;
 
                 while (j < strArray.length) {
-                    if (isSymbol(strArray[j]) || strArray[j].equals(".")) {
+                    if (isSymbol(strArray[j].charAt(0)) || strArray[j].equals(".")) {
                         i++;
                         j++;
                         continue;
                     }
                     StringBuilder num = new StringBuilder();
-                    while (j < strArray.length && !isSymbol(strArray[j]) && !strArray[j].equals(".")) {
+                    while (j < strArray.length && !isSymbol(strArray[j].charAt(0)) && !strArray[j].equals(".")) {
                         num.append(strArray[j]);
                         j++;
                     }
