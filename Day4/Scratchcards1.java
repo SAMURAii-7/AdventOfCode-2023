@@ -2,7 +2,6 @@ package Day4;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ public class Scratchcards1 {
         int pointsEarned = 0;
         Map<String, Integer> freq = new HashMap<>();
         for (String s : winningNums) {
-            freq.put(s, freq.getOrDefault(freq, 0) + 1);
+            freq.put(s, freq.getOrDefault(s, 0) + 1);
         }
 
         for (String s : cardNums) {
@@ -46,7 +45,7 @@ public class Scratchcards1 {
                 res += points(winningNums, cardNums);
             }
             System.out.println("Answer: " + res);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
